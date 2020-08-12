@@ -1,25 +1,17 @@
-@mixin active {
-  color: #0050b3;
-  background-color: #bae7ff;
-  border-right: 3px solid #0050b3;
+@mixin isactive($isActive: true) {
+  color: if($isActive, #0050b3, #000000);
+  background-color: if($isActive, #bae7ff, #ffffff);
+  border-right: 3px solid if($isActive, #0050b3, #ffffff);
 }
-@mixin unactive {
-  color: black;
-  background-color: white;
-  border-right: 3px solid white;
-}
-@mixin item {
+.menu-item {
   width: auto;
   padding: 5px 0;
   text-align: center;
   display: block;
-}
-.menu-item {
-  @include item();
   &.active {
-    @include active();
+    @include isactive();
   }
   &.unactive {
-    @include unactive();
+    @include isactive(false);
   }
 }

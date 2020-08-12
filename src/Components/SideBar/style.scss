@@ -1,20 +1,17 @@
 .common-sidebar {
-  height: 100%;
-  border-right: 1px solid #bfbfbf;
-  @mixin sidebar {
+  @mixin sidebar($width: 200px) {
+    border-right: 1px solid #bfbfbf;
     background-color: white;
     display: flex;
     flex-direction: column;
-  }
-  .opened {
-    @include sidebar();
-    width: 200px;
     height: 100%;
+    width: $width;
   }
-  .closed {
+  &.opened {
     @include sidebar();
-    width: 100px;
-    height: 100%;
+  }
+  &.closed {
+    @include sidebar(100px);
   }
   .menus {
     flex: 23;

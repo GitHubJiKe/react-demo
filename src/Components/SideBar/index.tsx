@@ -18,26 +18,20 @@ const SideBar: React.FC<ISideBarProps> = ({ menus, onItemClick }) => {
   const handleBtnClick = () => setOpened(!opened);
 
   return (
-    <div className="common-sidebar">
-      <div
-        className={classnams({
-          opened: opened,
-          closed: !opened,
-        })}
-      >
-        <div className="menus">
-          {menus.map((m) => (
-            <MenuItem
-              data={m}
-              key={m.text}
-              onClick={() => handleItemClick(m)}
-            />
-          ))}
-        </div>
-        <button className="sidebar-btn" onClick={handleBtnClick}>
-          折叠
-        </button>
+    <div
+      className={classnams("common-sidebar", {
+        opened: opened,
+        closed: !opened,
+      })}
+    >
+      <div className="menus">
+        {menus.map((m) => (
+          <MenuItem data={m} key={m.text} onClick={() => handleItemClick(m)} />
+        ))}
       </div>
+      <button className="sidebar-btn" onClick={handleBtnClick}>
+        折叠
+      </button>
     </div>
   );
 };
