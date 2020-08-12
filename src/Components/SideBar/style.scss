@@ -1,0 +1,26 @@
+.common-sidebar {
+  height: 100%;
+  @mixin sidebar {
+    background-color: #bbbbbb;
+    display: flex;
+    flex-direction: column;
+  }
+  &-opened {
+    @include sidebar();
+    width: 200px;
+    height: 100%;
+  }
+  &-closed {
+    @include sidebar();
+    width: 100px;
+    height: 100%;
+  }
+  .menus {
+    flex: 23;
+  }
+
+  .sidebar-btn {
+    flex: 1;
+    position: relative;
+  }
+}

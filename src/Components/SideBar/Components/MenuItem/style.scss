@@ -1,0 +1,27 @@
+$hight-light-color: chartreuse;
+
+@mixin active {
+  color: brown;
+  background-color: $hight-light-color;
+}
+@mixin unactive {
+  color: white;
+  background-color: blue;
+}
+@mixin item {
+  width: auto;
+  padding: 5px 0;
+  text-align: center;
+  display: block;
+}
+.menu-item {
+  @include item();
+  @include unactive();
+  &:hover {
+    @include active();
+  }
+  &-active {
+    @include item();
+    @include active();
+  }
+}
