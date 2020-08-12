@@ -1,9 +1,13 @@
-import React from "react";
-import "./App.scss";
+import React, { useEffect } from "react";
 import Pages from "./Pages";
 import SideBar from "./Components/SideBar";
-import { BrowserRouter } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { IMenuItem } from "./Components/SideBar/Components/MenuItem";
+import Footer from "./Components/Footer";
+import Header from "./Components/Header";
+import AppStore from "./AppStore";
+import { useObserver } from "mobx-react";
+import "./App.scss";
 
 const menus: IMenuItem[] = [
   { text: "Home", path: "/" },
@@ -11,18 +15,30 @@ const menus: IMenuItem[] = [
 ];
 
 export default function App() {
+  const loacation = useLocation();
+
   const onMenuItemClick = (item: IMenuItem) => {
     console.log(item);
   };
 
+  useEffect(() => {
+    const targetMenuItem = menus.find((m) => m.path === location.pathname);
+
+    targetMenuItem && AppStore.setHeaderTitle(targetMenuItem.text);
+  }, [loacation]);
+
   return (
-    <BrowserRouter>
-      <div className="layout">
-        <SideBar menus={menus} onItemClick={onMenuItemClick} />
-        <div className="right-box">
+    <div className="layout">
+      <SideBar menus={menus} onItemClick={onMenuItemClick} />
+      <div className="right-box">
+        {useObserver(() => (
+          <Header title={AppStore.headerTitle} />
+        ))}
+        <div className="pages-box">
           <Pages />
         </div>
+        <Footer text="hello world" />
       </div>
-    </BrowserRouter>
+    </div>
   );
 }

@@ -5,6 +5,8 @@ interface IHeaderProps {
   title: string;
 }
 
-export default ({ title = "title" }: IHeaderProps) => {
-  return <h1 className="common-header">{title}</h1>;
-};
+const Header: React.FC<IHeaderProps> = ({ title = "title" }) => (
+  <h1 className="common-header">{title}</h1>
+);
+
+export default Header;

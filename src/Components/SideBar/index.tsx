@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MenuItem, { IMenuItem } from "./Components/MenuItem";
+import classnams from "classnames";
 import "./style.scss";
 
 export interface ISideBarProps {
@@ -7,7 +8,7 @@ export interface ISideBarProps {
   onItemClick?(item: IMenuItem): void;
 }
 
-export default ({ menus, onItemClick }: ISideBarProps) => {
+const SideBar: React.FC<ISideBarProps> = ({ menus, onItemClick }) => {
   const [opened, setOpened] = useState(true);
 
   const handleItemClick = (item: IMenuItem) => {
@@ -16,13 +17,14 @@ export default ({ menus, onItemClick }: ISideBarProps) => {
 
   const handleBtnClick = () => setOpened(!opened);
 
-  const getSideBarClassName = () => {
-    return opened ? "common-sidebar-opened" : "common-sidebar-closed";
-  };
-
   return (
     <div className="common-sidebar">
-      <div className={getSideBarClassName()}>
+      <div
+        className={classnams({
+          opened: opened,
+          closed: !opened,
+        })}
+      >
         <div className="menus">
           {menus.map((m) => (
             <MenuItem
@@ -39,3 +41,5 @@ export default ({ menus, onItemClick }: ISideBarProps) => {
     </div>
   );
 };
+
+export default SideBar;

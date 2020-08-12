@@ -18,5 +18,10 @@ body,
   .right-box {
     flex: 5;
     min-width: 600px;
+    display: flex;
+    flex-direction: column;
+    .pages-box {
+      flex: 5;
+    }
   }
 }

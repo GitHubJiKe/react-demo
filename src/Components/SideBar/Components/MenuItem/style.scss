@@ -1,12 +1,12 @@
-$hight-light-color: chartreuse;
-
 @mixin active {
-  color: brown;
-  background-color: $hight-light-color;
+  color: #0050b3;
+  background-color: #bae7ff;
+  border-right: 3px solid #0050b3;
 }
 @mixin unactive {
-  color: white;
-  background-color: blue;
+  color: black;
+  background-color: white;
+  border-right: 3px solid white;
 }
 @mixin item {
   width: auto;
@@ -16,12 +16,10 @@ $hight-light-color: chartreuse;
 }
 .menu-item {
   @include item();
-  @include unactive();
-  &:hover {
+  &.active {
     @include active();
   }
-  &-active {
-    @include item();
-    @include active();
+  &.unactive {
+    @include unactive();
   }
 }

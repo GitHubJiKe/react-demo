@@ -1,12 +1,6 @@
 import React from "react";
-import Header from "../../Components/Header";
 import Content from "../../Components/Content";
 
-export default () => {
-  return (
-    <Content>
-      <Header title="About" />
-      <Content>I am About page</Content>
-    </Content>
-  );
-};
+const About: React.FC = () => <Content>I am About page</Content>;
+
+export default About;

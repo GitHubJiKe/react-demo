@@ -1,10 +1,11 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
+import classnams from "classnames";
 import "./style.scss";
 
 export interface IMenuItem {
   text: string;
-  path?: string;
+  path: string;
 }
 
 interface IMenuItemProps {
@@ -12,30 +13,28 @@ interface IMenuItemProps {
   onClick?(): void;
 }
 
-const MenuItem = ({ data: { text, path }, onClick }: IMenuItemProps) => {
+const MenuItem: React.FC<IMenuItemProps> = ({
+  data: { text, path },
+  onClick,
+}) => {
   const location = useLocation();
-
-  const getMenuItemClassName = () => {
-    return location.pathname === path ? "menu-item-active" : "menu-item";
-  };
 
   const handleClick = (e: any) => {
     e.stopPropagation();
     onClick && onClick();
   };
 
-  if (path) {
-    return (
-      <a className={getMenuItemClassName()} href={path} onClick={handleClick}>
-        {text}
-      </a>
-    );
-  }
-
   return (
-    <div className={getMenuItemClassName()} onClick={handleClick}>
+    <Link
+      className={classnams("menu-item", {
+        active: location.pathname === path,
+        unactive: location.pathname !== path,
+      })}
+      to={path}
+      onClick={handleClick}
+    >
       {text}
-    </div>
+    </Link>
   );
 };
 
