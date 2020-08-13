@@ -1,0 +1,20 @@
+@mixin abs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.loading-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include abs();
+  z-index: 999;
+  color: white;
+}
+.loading-mask {
+  background-color: rgba($color: #000000, $alpha: 0.7);
+  opacity: 0.7;
+  @include abs();
+}

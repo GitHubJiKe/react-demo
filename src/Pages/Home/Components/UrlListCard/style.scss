@@ -1,0 +1,13 @@
+.url-item {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  &-value {
+    flex: 18;
+    color: #597ef7;
+    cursor: pointer;
+  }
+  &-label {
+    flex: 6;
+  }
+}

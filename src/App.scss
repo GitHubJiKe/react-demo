@@ -24,6 +24,7 @@ body,
     display: flex;
     flex-direction: column;
     .pages-box {
+      overflow-y: scroll;
       flex: 5;
     }
   }
