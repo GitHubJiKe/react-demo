@@ -1,0 +1,48 @@
+.shapes-root {
+  .parallelogram {
+    width: 200px;
+    height: 100px;
+    background-color: #000000;
+    transform: skewX(-50deg);
+    position: relative;
+    left: 503px;
+    top: -150px;
+    display: inline-block;
+    &.bottom {
+      background-color: transparent;
+      top: 350px;
+      left: 300px;
+      z-index: 999;
+      border: 1px dashed gray;
+      display: inline-block;
+    }
+  }
+  .parallelogram-big {
+    width: 120px;
+    height: 500px;
+    background-color: yellow;
+    transform: skewY(-40deg);
+    position: relative;
+    left: 40px;
+    top: 300px;
+    display: inline-block;
+    &.left {
+      border: 1px dashed gray;
+      background-color: transparent;
+      transform: skewY(-40deg);
+      position: relative;
+      left: -278px;
+      top: 300px;
+      display: inline-block;
+    }
+  }
+  .rectangle {
+    width: 200px;
+    height: 500px;
+    background-color: red;
+    position: relative;
+    left: 42px;
+    top: 350px;
+    display: inline-block;
+  }
+}
