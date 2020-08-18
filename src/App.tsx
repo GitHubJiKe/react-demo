@@ -8,8 +8,7 @@ import Header from "./Components/Header";
 import AppStore from "./AppStore";
 import { useObserver } from "mobx-react";
 import "./App.scss";
-import 'antd/dist/antd.css'
-
+import "antd/dist/antd.css";
 
 const menus: IMenuItem[] = [
   { text: "Home", path: "/" },
@@ -17,6 +16,7 @@ const menus: IMenuItem[] = [
   { text: "Smooth", path: "/smooth" },
   { text: "Shapes", path: "/shapes" },
   { text: "Draggable", path: "/draggable" },
+  { text: "Demo", path: "/demo" },
 ];
 
 export default function App() {
