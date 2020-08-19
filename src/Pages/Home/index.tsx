@@ -8,26 +8,26 @@ import Loading from "../../Components/Loading";
 import ErrorBox from "../../Components/Error";
 
 const fetchData = () =>
-    axios.get("https://programming-quotes-api.herokuapp.com/quotes");
+  axios.get("https://programming-quotes-api.herokuapp.com/quotes");
 
 const Home: React.FC = () => {
-    const { error, data, isLoading } = useQuery("data", fetchData);
+  // const { error, data, isLoading } = useQuery("data", fetchData);
 
-    if (error) {
-        return <ErrorBox error={error as Error} />;
-    }
+  // if (error) {
+  //     return <ErrorBox error={error as Error} />;
+  // }
 
-    if (isLoading) {
-        return <Loading />;
-    }
+  // if (isLoading) {
+  //     return <Loading />;
+  // }
 
-    return (
-        <Content>
-            <Link to="/about">About</Link>
-            <Link to="/smooth">Smooth</Link>
-            <UrlListCard data={data?.data as IQuote[]} />
-        </Content>
-    );
+  return (
+    <Content>
+      <Link to="/about">About</Link>
+      <Link to="/smooth">Smooth</Link>
+      <UrlListCard data={[] as IQuote[]} />
+    </Content>
+  );
 };
 
 export default Home;

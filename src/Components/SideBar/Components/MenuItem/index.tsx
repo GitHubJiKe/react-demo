@@ -6,6 +6,7 @@ import "./style.scss";
 export interface IMenuItem {
   text: string;
   path: string;
+  permissions?: string[];
 }
 
 interface IMenuItemProps {

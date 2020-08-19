@@ -6,6 +6,8 @@ import Smooth from "./Smooth";
 import Shapes from "./Shapes";
 import DraggablePage from "./DraggablePage";
 import Demo from "./Demo";
+import AdvancedTable from "./AdvancedTable";
+import EChartDemo from "./EChartDemo";
 
 const Pages: React.FC = () => (
   <Switch>
@@ -15,6 +17,8 @@ const Pages: React.FC = () => (
     <Route component={Shapes} path="/shapes" />
     <Route component={DraggablePage} path="/draggable" />
     <Route component={Demo} path="/demo" />
+    <Route component={AdvancedTable} path="/table" />
+    <Route component={EChartDemo} path="/echart" />
     <Redirect to="/" />
   </Switch>
 );

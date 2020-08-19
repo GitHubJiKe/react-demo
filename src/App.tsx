@@ -17,6 +17,8 @@ const menus: IMenuItem[] = [
   { text: "Shapes", path: "/shapes" },
   { text: "Draggable", path: "/draggable" },
   { text: "Demo", path: "/demo" },
+  { text: "Table", path: "/table" },
+  { text: "Echart", path: "/echart", permissions: ["2"] },
 ];
 
 export default function App() {
