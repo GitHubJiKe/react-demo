@@ -2,8 +2,11 @@ import React, { useEffect } from "react";
 import ReactEcharts from "echarts-for-react";
 import echarts from "echarts";
 import { usePermissions } from "../../utils";
+import "./style.scss";
 
 export interface EChartDemoProps {}
+
+const pieChartStyle = { width: 200, height: 200, display: "inline-block" };
 
 const getOption = () => {
   return {
@@ -55,20 +58,22 @@ const getOption = () => {
 };
 
 function EChartDemo({}: EChartDemoProps) {
-  usePermissions(["6"], "/demo");
+  usePermissions(["1"], "/demo");
+
   useEffect(() => {
     echarts.registerTheme("my_theme", {
       backgroundColor: "#ffffff",
       color: "black",
     });
   }, []);
+
   return (
-    <div style={{ width: "100%", textAlign: "center" }}>
+    <div className="echarts-demo-root">
       <ReactEcharts
         echarts={echarts}
         // @ts-ignore
         option={getOption()}
-        style={{ width: 200, height: 200, display: "inline-block" }}
+        style={pieChartStyle}
         notMerge={true}
         lazyUpdate={true}
         theme={"my_theme"}

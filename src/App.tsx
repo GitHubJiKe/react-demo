@@ -1,31 +1,40 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Pages from "./Pages";
-import SideBar from "./Components/SideBar";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { IMenuItem } from "./Components/SideBar/Components/MenuItem";
-import Footer from "./Components/Footer";
-import Header from "./Components/Header";
 import AppStore from "./AppStore";
 import { useObserver } from "mobx-react";
+import { Layout, Menu } from "antd";
 import "./App.scss";
 import "antd/dist/antd.css";
+import {
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
+const { Header, Sider, Content, Footer } = Layout;
 
 const menus: IMenuItem[] = [
   { text: "Home", path: "/" },
+  { text: "Search", path: "/search" },
   { text: "About", path: "/about" },
   { text: "Smooth", path: "/smooth" },
   { text: "Shapes", path: "/shapes" },
   { text: "Draggable", path: "/draggable" },
   { text: "Demo", path: "/demo" },
   { text: "Table", path: "/table" },
-  { text: "Echart", path: "/echart", permissions: ["2"] },
+  { text: "Echart", path: "/echart" },
 ];
 
 export default function App() {
   const loacation = useLocation();
+  const history = useHistory();
 
-  const onMenuItemClick = (item: IMenuItem) => {
-    console.log(item);
+  const [collapsed, setCollapsed] = useState(false);
+  const onMenuItemClick = (d: any) => {
+    const { item, key, keyPath, domEvent } = d;
+    console.log({ item, key, keyPath, domEvent });
+    history.push(key);
   };
 
   useEffect(() => {
@@ -35,17 +44,39 @@ export default function App() {
   }, [loacation]);
 
   return (
-    <div className="layout">
-      <SideBar menus={menus} onItemClick={onMenuItemClick} />
-      <div className="right-box">
+    <Layout style={{ height: "100%" }}>
+      <Sider trigger={null} collapsible collapsed={collapsed}>
+        <div className="logo">ESOP</div>
+        <Menu theme="dark" mode="inline" onClick={onMenuItemClick}>
+          {menus.map((m) => {
+            return (
+              <Menu.Item key={m.path} icon={<UserOutlined />}>
+                {m.text}
+              </Menu.Item>
+            );
+          })}
+        </Menu>
+      </Sider>
+      <Layout className="site-layout">
         {useObserver(() => (
-          <Header title={AppStore.headerTitle} />
+          <Header className="site-layout-background" style={{ padding: 0 }}>
+            {React.createElement(
+              collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+              {
+                className: "trigger",
+                onClick: () =>
+                  setCollapsed((c) => {
+                    return !c;
+                  }),
+              }
+            )}
+          </Header>
         ))}
-        <div className="pages-box">
+        <Content className="site-layout-content">
           <Pages />
-        </div>
-        <Footer text="hello world" />
-      </div>
-    </div>
+        </Content>
+        <Footer className="site-layout-footer">hello world</Footer>
+      </Layout>
+    </Layout>
   );
 }

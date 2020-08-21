@@ -13,19 +13,32 @@ body,
   @include layout();
 }
 
-.layout {
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  @include layout();
-  .right-box {
-    flex: 5;
-    min-width: 600px;
-    display: flex;
-    flex-direction: column;
-    .pages-box {
-      overflow-y: scroll;
-      flex: 5;
-    }
-  }
+.logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+  text-align: center;
+  color: white;
+  line-height: 32px;
+}
+.site-layout .site-layout-background {
+  background: #fff;
+}
+.trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.trigger:hover {
+  color: #1890ff;
+}
+.site-layout-footer {
+  background-color: greenyellow !important;
+  text-align: center;
+}
+.site-layout-content {
+  overflow: hidden;
 }

@@ -8,6 +8,7 @@ import DraggablePage from "./DraggablePage";
 import Demo from "./Demo";
 import AdvancedTable from "./AdvancedTable";
 import EChartDemo from "./EChartDemo";
+import DraggableSearchBox from "./DraggableSearchBox";
 
 const Pages: React.FC = () => (
   <Switch>
@@ -19,6 +20,7 @@ const Pages: React.FC = () => (
     <Route component={Demo} path="/demo" />
     <Route component={AdvancedTable} path="/table" />
     <Route component={EChartDemo} path="/echart" />
+    <Route component={DraggableSearchBox} path="/search" />
     <Redirect to="/" />
   </Switch>
 );
